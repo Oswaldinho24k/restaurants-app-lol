@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+	<h2>Lista de Restaurantes</h2>
+	<form action="." method="GET">
+		<input type="text" name="q" value={{request.GET.q}}>
+		<button type="submit">Search</button>
+	</form>
+	<ul>
+		{%for r in restaurants%}
+		<li>
+			<a href="{{r.get_absolute_url}}">{{r.name}}</a>
+		</li>
+	{%endfor%}
+	</ul>
+{%endblock content%}

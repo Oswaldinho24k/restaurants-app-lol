@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block content%}
+	<h2>{{rest.name}}</h2>
+	<p>{{rest.is_open}}</p>
+	<p>{{rest.is_closed}}</p>
+	<h3>platillos</h3>
+	<a href="{%url 'platillos:new'%}">Add platillo</a>
+	<ul>
+		{%for platillo in rest.platillos.all%}
+			<li>{{platillo.name}}</li>
+		{%endfor%}
+	</ul>
+
+	<a href="{% url 'restaurants:edit' rest.pk%}">
+		<button>editar</button>
+	</a>
+	<a href="{% url 'restaurants:delete' rest.pk%}">
+		<button>borrar</button>
+	</a>
+{%endblock content%}
